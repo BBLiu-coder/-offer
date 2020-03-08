@@ -1,0 +1,57 @@
+//面试题7：重建二叉树
+struct BinaryTreeNode{
+  int m_nValue;
+  BinaryTreeNode* m_pLeft;
+  BinaryTreeNode* m_nRight;
+}
+
+BinaryTreeNode* Construct(int* preorder,int *inorder,int length)
+{
+  if(preorder==nullptr || inorder==nullptr || length<=0) return nullptr;
+  return ConstructCore(preorder,preorder+length-1,inorder,inorder+length-1);
+}
+
+BinaryTreeNode* ConstructCore(int* startpreorder,int* endpreorder,int* startinorder,int* endinorder )
+{
+  int rootValue=startpreorder[0];
+  BinaryTreeNode* root=new BinaryTreeNode();
+  root->m_nValue=rootValue;
+  root->m_nLeft=root->m_nRight=nullptr;
+  
+  if(startpreorder == endpreorder){   //此处表示只有一个根节点
+    if(startinorder == endinorder && *startpreorder == *startinorder)
+      return root;
+    else 
+      throw std::exception("Invalid input."); 
+  }
+  
+  //求中序遍历中根节点的值
+  int* rootInorder=startInorder;
+  while(rootInorder<=endInorder && rootInorder->m_nValue == rootValue)
+    ++rootInorder;
+  
+  if(rootInorder == endInorder && *rootInorder!=rootValue)
+    throw std::exception("Invalid input."); 
+    
+   int leftLength = rootInorder-startInorder;
+   int *leftPreorderEnd=startPreorder+leftLength;
+   if(leftLength>0){
+    //构建左子树
+    root->m_pLeft=ConstructCore(startPreorder+1,leftPreorderEnd,startInorder,rootInorder-1);
+   }
+  
+   if(leftLength<endPreorder-startPreorder){
+    //构建又子树
+    root->m_pRight=ConstructCore(leftPreorder+1,endleftPreorder,rootInorder+1,endInorder);
+   }
+  
+  return root;
+}
+
+
+
+
+
+
+
+

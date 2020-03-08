@@ -1,0 +1,42 @@
+//面试题5:替换空格
+void ReplaceBlank(char string[],int length)
+{
+  if(string == nullptr||length<=0){
+    return;
+  }
+  
+  int originalLength=0;
+  int numberOfBlank=0;
+  int i=0;
+  while(string[i]!='\0'){
+    ++originalLength;
+    if(string[i] == ' ')
+      ++numberOfBlank;
+    ++i;
+  }
+  int newLength = orignalLength+numberBlank*2;
+  if(newLength > length)
+    return;
+    
+   int indexOfOriginal=originalLength;
+   int indexOfNew=newLength;
+   
+   while(indexOfOriginal>=0 && indexOfNew > indexOfOriginal){
+    if(string[indexOfOriginal] == ' '){
+      string[indexNew--]='0';
+      string[indexNew--]='2';
+      string[indexNew--]='%';
+    }else{
+      string[indexNew--]=string[indexOfOriginal]
+    }
+    --indexOfOriginal;
+   }
+}
+
+
+
+
+
+
+
+

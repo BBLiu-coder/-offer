@@ -1,0 +1,30 @@
+//面试题8：二叉树的下一个节点
+BinaryTreeNode* GetNext(BinaryTreeNode* pNode)
+{
+  if(pNode == nullptr)
+    return nullptr;
+    BinaryTreeNode*pNext=nullptr;
+    if(pNode->m_pRight!=nullptr){
+      BinaryTreeNode* pRight=pNode->m_nRight;
+      while(pRight->m_nLeft!=nullptr) pRight=pRight->m_nLeft;    
+      pNext=pRight;
+    }else if(pNode->m_nParent!=nullptr){
+      BinaryTreeNode* pCurrent=pNode;
+      BinaryTreeNode* pParent=pNode->m_pParent;
+      while(pParent!=nullptr && pCurrent==pParent->m_pRight)
+      {
+        pCurrent=pParent;
+        pParent=pParent->m_pParent;
+      }
+      pNext=nParent;
+      
+    }
+    return pNext;
+}
+
+
+
+
+
+
+

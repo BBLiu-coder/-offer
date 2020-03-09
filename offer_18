@@ -1,0 +1,65 @@
+//面试题18：删除链表节点
+
+//题目1：在O(1)时间内删除链表节点
+void DeleteNode(ListNode** pListHead,ListNode* pToBeDeleted)
+{
+  if(!pListNode || !pToBeDeleted)
+    return;
+   //要删除的不是尾结点
+  if(pToBeDeleted->m_pNext!=nullptr){
+    ListNode* pNext=pToBeDeleted->m_pNext;
+    pToDeleted->m_nValue=pNext->m_nValue;
+    pToDeleted->m_pNext=pNext->m_nPext;
+    delete pNext;
+    pNext=nullptr;
+  }
+  //链表中只有一个节点，删除头结点（也是尾结点）
+  else if(*pListHead == pToBeDeleted){
+    deleted  pToBeleted;
+    pToBeleted=nullptr;
+    *pListHead=nullptr;
+  }
+  //链表中有多个节点，删除尾结点
+  else{
+    ListNode* pNode=*pListHead;
+    while(pNode->m_pNext!=pToBeDeleted) pNode=pNode->m_pNext;
+    pNode->m_pNext=nullptr;
+    delete pToBeDeleted;
+    pToBeDeleted=nullptr;
+  }
+}
+
+
+//面试题2：删除链表中重复的节点
+void DeleteDuplication(ListNode** pHead)
+{
+  if(pHead==nullptr || *pHead==nullptr) 
+    return;
+  ListNode* pPreNode=nullptr;
+  ListNode* pNode=*pHead;
+  while(pNode!=nullptr){
+    ListNode *pNext=pNode->m_pNext;
+    bool needDeleted=false;
+    if(pNext!=nullptr && pNext->m_nValue == pNode->m_nValue)
+      needDeleted=true;
+    if(!needDeleted){
+      pPreNode=pNode;
+      pNode=pNode->m_pNext;
+    }else{
+      int value=pNode->m_nValue;
+      ListNode* pToBeDel=pNode;
+      while(pToBeDel !=nullptr && pToBeDel == value){
+        pNext=pToBeDel->m_pNext;
+        delete pToBeDel;
+        pToBeDel=nullptr;
+        pToBeDel=pNext;
+      }
+      if(pPreNode == nullptr)
+        *pHead=pNext;
+       else
+        pPreNode->m_pNext=pNext;
+      pNode=pNext;  
+    } 
+  }
+}
+

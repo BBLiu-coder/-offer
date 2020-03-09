@@ -7,7 +7,7 @@ BinaryTreeNode* Convert(BinaryTreeNode* pRootOfTree)
   //pLastNodeInList指向双向链表的尾结点，我们需要返回头结点
   BinaryTreeNode* pHeadOfList=pLastNodeInList;
   while(pHeadOfList!=nullptr && pHeadOfList->m_pLeft!=nullptr)
-    pHeadOfList=pHeadOfList->m_pList;
+    pHeadOfList=pHeadOfList->m_pLeft;
   return pHeadOfList;
 }
 

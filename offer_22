@@ -1,0 +1,22 @@
+//面试题22：链表中倒数第k个节点
+ListNode* FindKthToTail(ListNode* pListNode,unsigned int k)
+{
+  if(pListNode==nullptr || k==0) return nullptr;
+  
+  ListNode* pAhead=pListNode;
+  ListNode* pBehind=nullptr;
+  for(unsigned int i=0;i<k-1;++i){
+    if(pAhead->m_pNext!=nullptr)
+      pAhead=pAhead->m_pNext；
+     else
+      return nullptr;
+  }
+  
+  pBehind=pListNode;
+  while(pAhead->m_pNext!=nullptr){
+    pAhead=pAhead->m_pNext;
+    pBehind=pBehind->m_pNext;
+  }
+  return pBhind;
+}
+

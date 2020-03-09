@@ -1,0 +1,19 @@
+//面试题27：二叉树的镜像
+void MirrorRecursively(BinaryTreeNode* pNode)
+{
+  if(pNode==nullptr)
+    return;
+   if(pNode->m_pLeft==nullptr && pNode->m_pRight==nullptr)
+    return;
+   
+   BinaryTreeNode* pTemp=pNode->m_pLeft;
+   pNode->m_pLeft=pNode->m_pRight;
+   pNode->m_pRight=pTemp;
+   
+   if(pNode->m_pLeft)
+    MirrorRecursively(pNode->pLeft);
+   
+   if(pNode->m_pRight)
+     MirrorRecursively(pNode->m_pRight);
+   
+}

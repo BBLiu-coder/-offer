@@ -1,0 +1,69 @@
+//面试题50：第一个只出现一次的字符
+//题目1：字符串中第一个只出现一次的字符
+char FirstNotReapting(char* pString)
+{
+  if(pString==nullptr)
+    return '\0';
+  const int tableSize=256;
+  unsigned int hashTable[tableSize];
+  for(unsigned int i=0;i<tableSize;++i){
+    hashTable[i]=0;
+  }
+  
+  char* pHashKey=pString;
+  while(*(pHashKey)!='\0')
+    hash[*(pHashKey++)]++;
+   pHashKey=pString;
+   while(*pHashKey!='\0'){
+    if(hashTable[*pHashKey]==1)
+      return *pHashKey;
+     
+    pHashKey++;
+   }
+  }
+  return '\0';
+}
+
+//题目2：字符流中第一个只出现一次的字符
+class CharStatics
+{
+  public:
+    CharStatics():index(0)
+    {
+      for(int i=0;i<256;++i)
+        occurrence[i]=-1;
+    }
+    
+    void Insert(char ch)
+    {
+      if(occurrence[ch]=-1)
+        occurence[ch]=index;
+      else if(occurence[ch]>=0)
+        occurence[ch]=-2;
+       
+       index++;
+    }
+    
+    char FirstApperaringOnce()
+    {
+      char ch='\0';
+      int minIndex=numeric_limit<int>::max(); //表示int类型的最大值
+      for(int i=0;i<256;++i){
+        if(occurence[i]>=0 && occurence[i]<minIndex){
+          ch=(char)i;
+          minIndex=occurence[i];
+        }
+      }
+      return ch;
+    }
+    
+   private:
+    int occurence[256];
+    int index;
+    
+}
+
+
+
+
+

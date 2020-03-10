@@ -1,0 +1,24 @@
+//面试题47：礼物的最大价值
+int getMaxValue_solution2(const int* values,int rows,int cols)
+{
+  if(values==nullptr || int rows<=0 || cols<=0)
+    return 0;
+  int* maxValues=new int[cols];
+  for(int i=0;i<rows;++i){
+    for(int j=0;j<cols;++j){
+      int left=0;
+      int right=0;
+      if(i>0)
+        up=maxValues[j];
+      if(j>0)
+        left=maxValue[j-1];
+        
+       maxValues[i]=std::max(left,up)+values[i*cols+j];
+    }
+  }
+  int maxValue=maxValues[cols-1];
+  delete[] maxValues;
+  return maxValue;
+}
+
+

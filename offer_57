@@ -1,0 +1,63 @@
+//面试题57：和为s的数字
+//题目1：和为s的两个数字
+bool FindNumbersWithSum(int data[],int length,int sum,int* num1,int* num2)
+{
+  bool found=false;
+  if(length<1 || num1==nullptr || num2==nullptr)
+    return found;
+  
+  int ahead=length-1;
+  int behind=0;
+  while(ahead<=behind){
+    long long curSum=data[ahead]+data[behind];
+    if(curSum==sum){
+      *number1=data[ahead];
+      *number2=data[behind];
+      found=true;
+      break;
+    }else if(curSum<sum){
+      behind++;
+    }else{
+      ahead--;
+    }
+  }
+  return found;
+}
+
+//题目2：和为s的连续正数序列
+void FindContinuousSequence(int sum)
+{
+  if(sum<3)
+    return;
+   int small=1;
+   int big=2;
+   int middle=(1+sum)/2;
+   int curSum=small+big;
+   
+   while(small<big){
+    if(curSum==sum)
+      PrintContinusSequence(small,big);
+      
+    while(curSum>sum && small<middle){
+      small++;
+      
+      if(curSum==sum)
+        PrintContinusSequence(small,big);
+    }
+    big++;
+    curSum+=big;
+   }   
+}
+
+void PrintContinusSequence(int small,int big)
+{
+  for(int i=small;i<=big;++i){
+    printf("%d ",i);
+  }
+  printf("\n");
+}
+
+
+
+
+

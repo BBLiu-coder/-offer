@@ -39,6 +39,7 @@ void FindContinuousSequence(int sum)
       PrintContinusSequence(small,big);
       
     while(curSum>sum && small<middle){
+      curSum-=small;
       small++;
       
       if(curSum==sum)

@@ -1,0 +1,45 @@
+//面试题58：反转字符串
+//题目1：反转单词顺序
+void Reverse(char* pBegin,char* pEnd)
+{
+  if(pBegin==nullptr||pEnd==nullptr)
+    return;
+  
+  while(pBegin<pEnd){
+    char temp=*pBegin;
+    *pBegin=*pEnd;
+    *pEnd=temp;
+    
+    *pBegin++;
+    *pEnd--;
+  }
+}
+
+char* ReverSentence(char* pData)
+{
+  if(pData==nullptr)
+    return nullptr;
+    
+  char *pBegin=pData;
+  char *pEnd=pData;
+  while(*pEnd!='\0'){
+    pEnd++;
+  }
+  pEnd--;
+  
+  Reverse(pBegin,pEnd);//翻转整个句子
+  
+  pBegin=pEnd=pData;
+  while(*pBegin!='\0'){
+    if(*pBegin==' '){
+      pBegin++;
+      pEnd--;
+    }else if(*pEnd==' '||*pEnd=='\0'){
+      Reverse(pBegin,pEnd);
+      pBegin=++pEnd;
+    }else{
+      pEnd++;
+    }
+  }
+  return pData;
+}

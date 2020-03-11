@@ -76,6 +76,26 @@ int GetMissingNumber(const int* number,int length)
   return -1;
 }
 
+//题目3：数组中数值和下标相等的元素
+int GetNumberSameAsIndex(const int* numbers,int length)
+{
+  if(numbers==nullptr || length<=0)
+    return -1;
+  
+  int left=0;
+  int right=length-1;
+  while(left<=right){
+    int middle=left+((right-left)>>1);
+    if(number[middle]==middle)
+      return middle;
+    if(number[middle]>middle)
+      right=middle-1; 
+    else
+      left=middle+1;
+  }
+  return -1;
+}
+
 
 
 

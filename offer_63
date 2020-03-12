@@ -1,0 +1,18 @@
+//面试题63：股票的最大利润
+int MaxDiff(const in* numbers,unsigned int length)
+{
+  if(number==nullptr && length<2)
+    return 0;
+  
+  int min=number[0];
+  int maxDiff=number[1]-min;
+  for(int i=2;i<length;++i){
+    if(number[i-1]<min)
+      min=numbers[i-1];
+      
+    int currentDiff=number[i]-min;
+    if(currentDiff>maxDiff)
+      maxDiff=currentDiff;
+  }
+  return maxDiff;
+}

@@ -1,0 +1,35 @@
+//面试题61：扑克牌中的顺子
+bool IsContinuous(int* numbers,int length)
+{
+  if(numbers==nullptr||length<1)
+    return false;
+  
+  qsort(number,length,sizeof(int),compare);
+  
+  int numberofZero=0;
+  int numberGap=0;
+  
+  //
+  for(int i=0;i<length && number[i]==0;++i)
+    ++numberofZero;
+    
+  //
+  int small=numberOfZero;
+  int big=small+1;
+  while(big<length){
+    //
+    if(number[small]==number[big])
+      retiurn false;
+    
+    numberOfGap+=number[big]-number[small]-1;
+    small=big;
+    ++big;
+  }
+  return (numberOfGap>numberOfZero)?false:true;
+}
+
+int compare(cosnt void* agr1,const void* arg2)
+{
+  return *(int*)arg1-*(int)arg2;
+}
+
